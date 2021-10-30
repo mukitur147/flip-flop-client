@@ -3,17 +3,20 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import './ServiceDetails.css'
+import { useForm } from "react-hook-form";
 
 const ServiceDetails = () => {
+
+   
 
     let {key}=useParams()
    const [serviceDetails,setServiceDetails]= useState([])
    const [singleService,setSingleService]= useState({}) 
 
    useEffect(()=>{
-       fetch('/services.json')
+       fetch('http://localhost:5000/products')
        .then(res=>res.json())
-       .then(data =>setServiceDetails(data.service))
+       .then(data =>setServiceDetails(data))
    },[])
 
    useEffect(()=>{
@@ -21,12 +24,35 @@ const ServiceDetails = () => {
        setSingleService(foundService)
    },[serviceDetails])
 
-
+//    orders 
+   const { register, handleSubmit ,reset } = useForm();
+   const onSubmit = data => {
+     data.order = singleService?.name 
+     
+     
+     fetch('http://localhost:5000/orders',{
+         method : 'POST',
+         headers:{
+             'content-type':'application/json'
+         },
+         body : JSON.stringify(data)
+     })
+     .then(res=>res.json())
+     .then(result=>{
+        if(result.insertedId){
+            alert('Order processed Successfully')
+            reset()
+        }
+     })
+    
+     
+};
 
 
 
     return (
         <div>
+            <h2 className="text-danger mt-4 title"><b>CONFIRM YOUR BOOKING </b></h2>
 
       <div className="service-details my-5 mx-5">
 
@@ -67,11 +93,32 @@ const ServiceDetails = () => {
              </div>
            </div>
            <br />
-           <h6> Package Price : <span>${singleService?.price}</span> per head</h6>
+           <h6> Package Price : <span>${singleService?.price}</span> (per head)</h6>
            <br />
+
+
+
+            <div className="my-4 all-inputs">
+                <h6 className="mb-3">Please fill up all fields</h6>
+            <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("name", { required: true})} placeholder="Name"  className="me-3" required/>
+      
+      <input type="email" {...register("email", {required: true})} placeholder="Email"  required />
+      <input type="number" {...register("phone_number", {required: true})} placeholder="Phone Number" className="me-3" required />
+      <input  {...register("city", {required: true})} placeholder="City" required />
+      
+      <input {...register("address",{required: true})} placeholder="Address" className="mb-3 w-100 " required />
+      <br />
+      <button type="submit" className="custom-button me-3">Confirm Booking</button>
+    </form>
+            </div>
+
+
+
+
           
-        <button className="custom-button me-3">Confirm Booking</button>
-        <button className="custom-button">Back to Home</button>
+        
+       
 
 
        </div>

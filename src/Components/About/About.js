@@ -11,10 +11,10 @@ const About = () => {
     const cell = <FontAwesomeIcon icon={faPhone} />
     return (
         <div>
-        <div className=" container contact-us my-5">
+        <div className=" container contact-us my-5 ">
           <div className="left-align mx-auto">
              
-              <h4 className="mb-4 text-danger"><b>Get In Touch With Us</b></h4>
+              <h4 className="mb-4 text-danger "><b>Get In Touch With Us</b></h4>
               
                 <p> <span>{locate}</span> Dhaka,Bangladsh</p>
                 <p> <span>{mail}</span> holidays@gmail.com</p>

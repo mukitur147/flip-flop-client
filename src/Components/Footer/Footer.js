@@ -32,10 +32,6 @@ const Footer = () => {
                     <p>Documentation</p>
                     <p>Cookies</p>
                 </div>
-                <div className="left-align">
-                    <input type="text"  placeholder="Email Adress"/> <br /> <br />
-                    <button className="custom-button">Subscribe</button>
-                </div>
             </div>
             <p className="py-3"><small>Flip Flop Holidays template by - Mukitur Rahman Tilok</small></p>
            </div>

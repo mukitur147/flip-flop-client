@@ -1,4 +1,21 @@
-
+.user{
+    display: flex;
+}
+.user-img{
+    clip-path: circle();
+    width: 40px;
+    height: 40px;
+}
+.user-handler{
+    font-size: 17px;
+    font-weight: 600;
+    padding-bottom: 13px;
+    color: rgb(46, 40, 40);
+}
+.user-handler a{    
+    font-size: 17px ;
+    color: rgb(41, 37, 37);
+}
 .nav-route{
     height: 40px;
 }
@@ -50,4 +67,22 @@
         font-size: 15px;
         padding-bottom: 0%;
     }
+    .user-handler{
+        font-size: 14px;
+        margin: auto;
+    }
+    .user-handler a{
+        
+        font-size: 13px;
+        font-weight: 600;
+        color: rgb(88, 85, 85);
+    }
+    .user{
+        display: block;
+    }
+    .user-img{
+        margin-top: 10px;
+    }
+  
+    
 }

@@ -7,9 +7,9 @@ import Service from '../Home/Service';
 const AllServices = () => {
     const [services,setServices]=useState([])
   useEffect(()=>{
-    fetch('./services.json')
+    fetch('http://localhost:5000/products')
     .then(res=>res.json())
-    .then(data=>setServices(data.service))
+    .then(data=>setServices(data))
 
   },[])
     return (
@@ -17,7 +17,8 @@ const AllServices = () => {
             <Container>
             <div className="testimonial-section">
     <h6 className=" mt-4 ">Our Packages</h6>
-    <h4 className="mb-5"><b>Travel With Us</b> </h4>
+    <h4 ><b>Travel With Us</b> </h4>
+    <p className="mb-5"><small>There’s a sunrise and a sunset every single day, and they’re absolutely free. Don’t miss so many of them</small></p>
     </div>
 
                 {/* card map  */}

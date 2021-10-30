@@ -1,6 +1,10 @@
+.only-for-small{
+  display: none;
+}
 .slide-details h3{
     color: #e44c35;
 }
+
 .slide-details{
     background-color: rgba(211, 211, 211, 0.726);
     padding-top: 60px;
@@ -55,10 +59,21 @@
   }
 
 @media only screen  and (max-width:668px){
+  .only-for-large{
+    display: none;
+  }
+  .only-for-small{
+    display: block;
+    margin-bottom: 20px;
+    
+  }
     .choose-section{
         display: grid;
         grid-template-columns: repeat(1,1fr);
         
+    }
+    .small-details{
+      padding: 20px;
     }
     .choose-detail p , li{
         font-size: 15px;
@@ -66,6 +81,7 @@
     .slide-details{
        display: none;
     }
+    
     .testimonials{
         display: grid;
         grid-template-columns: repeat(2,1fr);
@@ -80,5 +96,23 @@
       .testimonial-section h6{
         font-size: 15px;
       }
+     .choose-section h4{
+       font-size: 20px;
+     }
+     
+     .small-details h3{
+       color:#e2543e ;
+     }
+     .small-details p{
+       font-size: 12px;
+       font-weight: 600;
+       color: rgb(87, 83, 83);
+       
+     }
+     .custom-button{
+       width: auto;
+       padding-right: 10px;
+       padding-left: 10px;
+     }
     
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import umbrella from '../../Images/umbrella.png'
 import './Header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,6 +14,7 @@ const Header = () => {
   const loginIcon = <FontAwesomeIcon icon={faSignInAlt} />
 
   const {user ,logout} = useAuth();
+  console.log(user.photoURL)
 
  
   const handleLogin=()=>{
@@ -22,7 +23,7 @@ const Header = () => {
 
     return (
         <div>
-            <Navbar variant="light" bg="light" expand="lg">
+            <Navbar   variant="light" bg="light" expand="lg">
   <Container>
     <Navbar.Brand href="#home"> <h3 className="title-name"> <img src={umbrella} alt="" /> Flip Flop Holidays</h3></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,9 +35,17 @@ const Header = () => {
       </Nav>
       <Nav className="ms-auto">
         {
-           user.displayName ? <div className="d-flex">
-           <p className="me-3"><small> {user.displayName}</small></p>
-           <button onClick={logout} className="custom-button"> Logout</button>
+           user.displayName ? <div className="user">
+             <img className="user-img" src={user.photoURL} alt="" />
+           <NavDropdown className="user-handler" title={user.displayName} id="basic-nav-dropdown">
+          <NavDropdown.Item href="#action/3.1">My Orders</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">Manage All Orders</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Add a New Package</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <button onClick={logout} className="custom-button ms-2"> Logout</button>
+        </NavDropdown>
+           
+          
           </div> :
          <button onClick={handleLogin} className="custom-button">{loginIcon} Login</button>
         }

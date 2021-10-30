@@ -13,25 +13,40 @@ import './Home.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import Service from './Service.js';
+import { useHistory } from 'react-router';
 
 const Home = () => {
   
  
-
+  const history=useHistory()
   const star = <FontAwesomeIcon icon={faStar} />
 
   const [services,setServices]=useState([])
   useEffect(()=>{
-    fetch('./services.json')
+    fetch('http://localhost:5000/products')
     .then(res=>res.json())
-    .then(data=>setServices(data.service))
+    .then(data=>setServices(data))
 
   },[])
+
+  const handleAllServices =()=>{
+    history.push('/allServices')
+  }
     return (
         <div>
 
-  
-   <div className="mb-5 ">
+  <div className="only-for-small" >
+    <div className="small-details">
+      <h3><b>Flip Flop Holidays</b></h3>
+      <p>Your trusted Tour oparetor</p>
+    </div>
+      <img className="img-fluid" src={carousel3} alt="" />
+  </div>
+
+
+       {/* caraousel  */}
+   <div className="mb-5 only-for-large  ">
+       
         <Carousel fade>
          <Carousel.Item>
       <img
@@ -40,11 +55,11 @@ const Home = () => {
       alt="First slide"
     />
     <Carousel.Caption>
-     <div className="slide-details">
+     <div className="slide-details ">
      <h3><b>Flip Flop Holidays</b></h3>
       <p>Your trusted Tour oparetor</p>
       <p><small>There’s a sunrise and a sunset every single day, and they’re absolutely free. Don’t miss so many of them</small></p>
-      <button className="custom-button mt-3">View Our All Packages</button>
+      <button onClick={handleAllServices} className="custom-button mt-3">View Our All Packages</button>
      </div>
     </Carousel.Caption>
   </Carousel.Item>
@@ -60,7 +75,7 @@ const Home = () => {
      <h3><b>Flip Flop Holidays</b></h3>
       <p>Your trusted Tour oparetor</p>
       <p><small>There’s a sunrise and a sunset every single day, and they’re absolutely free. Don’t miss so many of them</small></p>
-      <button className="custom-button mt-3">View Our All Packages</button>
+      <button onClick={handleAllServices} className="custom-button mt-3">View Our All Packages</button>
      </div>
     </Carousel.Caption>
   </Carousel.Item>
@@ -76,12 +91,35 @@ const Home = () => {
     <h3><b>Flip Flop Holidays</b></h3>
       <p>Your trusted Tour oparetor</p>
       <p><small>There’s a sunrise and a sunset every single day, and they’re absolutely free. Don’t miss so many of them</small></p>
-      <button className="custom-button mt-3">View Our All Packages</button>
+      <button onClick={handleAllServices} className="custom-button mt-3">View Our All Packages</button>
      </div>
     </Carousel.Caption>
   </Carousel.Item>
 </Carousel>
             </div>
+
+            {/* services  */}
+
+       <div className="my-3">
+
+
+<Container>
+<div className="testimonial-section">
+<h6 className=" mt-4 ">Our Packages</h6>
+<h4 ><b>Travel With Us</b> </h4>
+<p className="mb-5"><small>There’s a sunrise and a sunset every single day, and they’re absolutely free. Don’t miss so many of them</small></p>
+</div>
+
+<Row xs={1} md={3} className="g-4">
+{Array.from({ length: 1 }).map((_, idx) => (
+    services.slice(0,6).map(service=> <Service
+     service={service}
+    ></Service>)
+))}
+</Row>
+<button onClick={handleAllServices} className=" m-4 custom-button">See All Packages</button> 
+</Container>
+</div>
 
        {/* why choose us  */}
 
@@ -127,33 +165,7 @@ const Home = () => {
             </div>
         </Container>
 
-         
-       {/* services  */}
-
-       <div className="my-3">
-
-
-        <Container>
-    <div className="testimonial-section">
-    <h6 className=" mt-4 ">Our Packages</h6>
-    <h4 className="mb-5"><b>Travel With Us</b> </h4>
-    </div>
-
-    <Row xs={1} md={3} className="g-4">
-      {Array.from({ length: 1 }).map((_, idx) => (
-            services.slice(0,6).map(service=> <Service
-             service={service}
-            ></Service>)
-      ))}
-       </Row>
-       <button className=" m-4 custom-button">See All Packages</button> 
-       </Container>
-       </div>
-          
-  
-
-
-
+        
         {/* testimonials */}
 
 
@@ -165,21 +177,21 @@ const Home = () => {
             <h4><b>What Our Customer Says</b></h4>
             <p>There are some reviews from our customers. See their experinces down below.</p>
             <div className="testimonials mb-5">
-              <div className="reviews">
+              <div className="reviews rounded-3">
                  
                   <p>Awesome Service !! I am greatfull to them . For a healthy life you should travel more and more .</p>
                   <p className="text-warning">{star}{star}{star}{star}{star}</p>
                   <img className="reviewers-img img-fluid" src={man1} alt="" />
                   <p className="text-danger">-Mark Otto</p>
               </div>
-              <div  className="reviews">
+              <div  className="reviews rounded-3">
               
                   <p>Awesome Service !! I am greatfull to them . For a healthy life you should travel more and more .</p>
                   <p className="text-warning">{star}{star}{star}{star}{star}</p>
                   <img className="reviewers-img img-fluid" src={man2} alt="" />
                   <p className="text-danger">-Steve Johnson</p>
               </div>
-              <div  className="reviews">
+              <div  className="reviews rounded-3">
            
                   <p>Awesome Service !! I am greatfull to them . For a healthy life you should travel more and more .</p>
                   <p className="text-warning">{star}{star}{star}{star}{star}</p>
@@ -187,7 +199,7 @@ const Home = () => {
                   <p className="text-danger">-Chris Thomas</p>
                  
               </div>
-              <div  className="reviews">
+              <div  className="reviews rounded-3">
              
                   <p>Awesome Service !! I am greatfull to them . For a healthy life you should travel more and more .</p>
                   <p className="text-warning">{star}{star}{star}{star}{star}</p>
