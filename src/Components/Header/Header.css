@@ -1,0 +1,53 @@
+
+.nav-route{
+    height: 40px;
+}
+.nav-route a{
+    text-decoration: none;
+    color: rgb(88, 85, 85);
+}
+.nav-route h6{
+     font-size: 18px;
+     font-weight: 600;
+     margin-right: 15px;
+     padding-bottom: 8px;
+}
+.nav-route h6:hover{
+    border-bottom: 4px solid #e44c35 ;
+    font-size: 19px;
+    transition: font-size 0.9s;
+}
+.title-name{
+    color:#e44c35 ;
+    font-family: 'Lobster', cursive;
+}
+.custom-button{
+    background-color: #e94b32ee;
+    color: white;
+    font-size: 17px;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 25px;
+}
+.custom-button:hover{
+    transform: scale(1.03);
+    transition: transform 0.7s ;
+}
+@media only screen and (max-width:668px) {
+    .title-name{
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .nav-route{
+        height: auto; }
+    .custom-button{
+        padding: 5px 2px;
+        width: 30%;
+        margin: auto;
+        font-size: 15px;
+    }
+    .nav-route h6{
+        font-size: 15px;
+        padding-bottom: 0%;
+    }
+}

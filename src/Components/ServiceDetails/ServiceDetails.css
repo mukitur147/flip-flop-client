@@ -1,0 +1,42 @@
+
+.service-details{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap: 20px;
+}
+.service-details h6{
+    color: #e44c35;
+    font-weight: 600;
+}
+.service-details h5{
+    color: #e44c35;
+    font-weight: 600;
+}
+.service-details span{
+    font-size: 32px;
+    color: goldenrod;
+}
+.includes{
+    display: flex;
+}
+@media only screen and  (max-width:668px) {
+    .service-details{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+    .service-details h3{
+        margin-top: 20px;
+    }
+    .service-details h6{
+        font-size: 13px;
+    }
+    .service-details p{
+        font-size: 15px;
+    }
+  .custom-button{
+      font-size: 11px;
+  }
+  .includes{
+      display: block;
+  }
+}

@@ -1,0 +1,22 @@
+.services-card p{
+    font-size: 17px;
+    color: rgb(73, 69, 69);
+}
+.services-card small{color: #e44c35;
+    font-weight: 600;
+}
+.services-card:hover{
+    cursor: pointer;
+    transform: scale(1.02);
+    transition: transform 1s;
+  
+}
+.services-card{
+    box-shadow: 5px 5px 25px gray;
+    border-radius: 10px;
+}
+@media only screen and (max-width:668px) {
+    .services-card p{
+        font-size: 13px;
+    }
+}

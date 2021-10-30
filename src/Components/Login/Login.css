@@ -1,0 +1,26 @@
+.or{
+    color: #e44c35;
+    border-bottom: 2px solid lightgray;
+    padding-bottom: 5px;
+    width: 45%;
+    margin: auto;
+}
+.custom-button2{
+  background-color: rgb(228, 225, 225);
+  font-size: 16px;
+  font-weight: 600;
+
+}
+@media only screen and (min-width:690px) {
+    .full-form{
+        width: 25%;
+    } 
+    }
+    @media only screen and (max-width:668px) {
+        .custom-button2{
+            font-size: 13px;
+        }
+        .full-form{
+            width: 95%;
+        }
+    }

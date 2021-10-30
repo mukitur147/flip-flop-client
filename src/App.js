@@ -1,23 +1,65 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { Spinner } from 'react-bootstrap';
+import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import './App.css';
+import About from './Components/About/About';
+import AllServices from './Components/AllServices/AllServices';
+import Footer from './Components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
+import AuthProvider from './Contex/AuthProvider';
+import { PulseLoader, SyncLoader } from 'react-spinners';
 
 function App() {
+  const [loading,setLoading] = useState(false)
+
+  useEffect(()=>{
+    setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      {
+        loading ?  <div className="mt-5">
+          <h6>Please wait a moment...</h6>
+          <PulseLoader color={'#F5A623'} loading={loading}  size={30} />
+        </div>
+        :
+        <AuthProvider>
+        <BrowserRouter>
+         <Header></Header>
+         <Switch>
+           <Route exact path="/">
+             <Home></Home>
+           </Route>
+           <Route path="/home">
+             <Home></Home>
+           </Route>
+           <Route path="/allServices">
+             <AllServices></AllServices>
+           </Route>
+           <Route path="/about">
+             <About></About>
+           </Route>
+           <Route path="/login">
+             <Login></Login>
+           </Route>
+           <PrivateRoute path="/serviceDetails/:key">
+             <ServiceDetails></ServiceDetails>
+           </PrivateRoute>
+         </Switch>
+         <Footer></Footer>
+         </BrowserRouter>
+        </AuthProvider>
+      }
+    
     </div>
   );
 }
