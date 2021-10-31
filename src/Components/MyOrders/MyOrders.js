@@ -49,7 +49,7 @@ const MyOrders = () => {
                <ul className="list-group list-group-horizontal ">
                     <li className="list-group-item item2">{user.displayName}</li>
                     <li className="list-group-item item1">{matchedOrder?.address}</li>
-                    <li className="list-group-item ">{matchedOrder?.order}</li>
+                    <li className="list-group-item ">{matchedOrder?.order_name}</li>
                     <li className="list-group-item">${matchedOrder?.price}</li>
                     <button onClick={()=> handleDelete(matchedOrder?._id)} className="btn btn-danger btn-height">X</button>
                 </ul>

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Spinner } from 'react-bootstrap';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import './App.css';
 import About from './Components/About/About';
@@ -12,7 +11,7 @@ import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
 import AuthProvider from './Contex/AuthProvider';
-import { PulseLoader, SyncLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 import MyOrders from './Components/MyOrders/MyOrders';
 import AllOrders from './Components/AllOrders/AllOrders';
 import AddNewService from './Components/AddNewService/AddNewService';

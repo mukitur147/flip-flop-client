@@ -17,7 +17,7 @@ const AllOrders = () => {
         .then(data=>{
            if(data.deletedCount){
                alert('deleted')
-               const remaining = orders.filter(orders=>orders._id !== key);
+               const remaining = orders.filter(order=>order._id !== key);
                setOrders(remaining);
            }
         })
@@ -36,15 +36,15 @@ const AllOrders = () => {
             </div>
 
         {
-            orders.map(order=><div className="list">
+            orders.map(order=> <div className="list">
             <ul className="list-group list-group-horizontal ">
-                 <li className="list-group-item">{order.username}</li>
+                 <li className="list-group-item">{order.name}</li>
                  <li className="list-group-item item1">{order.email}</li>
                  <li className="list-group-item item2">{order.address}</li>
-                 <li className="list-group-item">{order.order}</li>
-                 <button onClick={()=> handleDelete(orders?._id)} className="btn btn-danger btn-height">X</button>
+                 <li className="list-group-item">{order.order_name}</li>
+                 <button onClick={()=> handleDelete(order?._id)} className="btn btn-danger btn-height">X</button>
              </ul>
-            </div>)
+            </div> )
         }
     </div>
     );

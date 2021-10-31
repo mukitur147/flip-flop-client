@@ -29,7 +29,7 @@ const ServiceDetails = () => {
    const { register, handleSubmit ,reset } = useForm();
    
    const onSubmit = data => {
-     data.order = singleService?.name 
+     data.order_name = singleService?.name 
      data.price =singleService?.price
      data.username = user?.displayName
    
