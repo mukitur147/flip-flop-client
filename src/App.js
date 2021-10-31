@@ -13,6 +13,10 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
 import AuthProvider from './Contex/AuthProvider';
 import { PulseLoader, SyncLoader } from 'react-spinners';
+import MyOrders from './Components/MyOrders/MyOrders';
+import AllOrders from './Components/AllOrders/AllOrders';
+import AddNewService from './Components/AddNewService/AddNewService';
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
   const [loading,setLoading] = useState(false)
@@ -54,6 +58,18 @@ function App() {
            <PrivateRoute path="/serviceDetails/:key">
              <ServiceDetails></ServiceDetails>
            </PrivateRoute>
+           <Route path="/myorders">
+             <MyOrders></MyOrders>
+           </Route>
+           <Route path="/allorders">
+             <AllOrders></AllOrders>
+           </Route>
+           <Route path="/addservice">
+             <AddNewService></AddNewService>
+           </Route>
+           <Route path="*">
+             <NotFound></NotFound>
+           </Route>
          </Switch>
          <Footer></Footer>
          </BrowserRouter>

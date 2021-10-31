@@ -36,11 +36,13 @@ const Header = () => {
       <Nav className="ms-auto">
         {
            user.displayName ? <div className="user">
-             <img className="user-img" src={user.photoURL} alt="" />
+             <img className="user-img" src={user?.photoURL} alt="" />
            <NavDropdown className="user-handler" title={user.displayName} id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">My Orders</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Manage All Orders</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Add a New Package</NavDropdown.Item>
+          <div className="user-active">
+          <Link to="/myorders">My Orders</Link>
+          <Link to="/allorders">Manage All Orders</Link>
+          <Link to="/addservice">Add a New Package</Link>
+          </div>
           <NavDropdown.Divider />
           <button onClick={logout} className="custom-button ms-2"> Logout</button>
         </NavDropdown>

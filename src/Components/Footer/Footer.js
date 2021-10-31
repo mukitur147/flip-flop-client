@@ -11,7 +11,8 @@ const Footer = () => {
     const cell = <FontAwesomeIcon icon={faPhone} />
     return (
         <div>
-            <div  className="main-footer">
+            <footer>
+            <div className="main-footer ">
            <div className="footer container">
                 <div className="left-align">
                     <h5> <img src={umbrella} alt="" /> Flip Flop Holidays</h5>
@@ -35,6 +36,7 @@ const Footer = () => {
             </div>
             <p className="py-3"><small>Flip Flop Holidays template by - Mukitur Rahman Tilok</small></p>
            </div>
+            </footer>
         </div>
     );
 };

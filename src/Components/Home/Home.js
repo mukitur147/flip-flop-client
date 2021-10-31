@@ -23,7 +23,7 @@ const Home = () => {
 
   const [services,setServices]=useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/products')
+    fetch('https://grisly-blood-12747.herokuapp.com/products')
     .then(res=>res.json())
     .then(data=>setServices(data))
 
@@ -113,6 +113,7 @@ const Home = () => {
 <Row xs={1} md={3} className="g-4">
 {Array.from({ length: 1 }).map((_, idx) => (
     services.slice(0,6).map(service=> <Service
+    key={service.key}
      service={service}
     ></Service>)
 ))}

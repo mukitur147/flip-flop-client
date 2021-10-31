@@ -4,17 +4,18 @@ import { useState } from 'react';
 import { useParams } from 'react-router';
 import './ServiceDetails.css'
 import { useForm } from "react-hook-form";
+import useAuth from '../../Hooks/useAuth';
 
 const ServiceDetails = () => {
 
    
-
+    const {user}=useAuth()
     let {key}=useParams()
    const [serviceDetails,setServiceDetails]= useState([])
    const [singleService,setSingleService]= useState({}) 
 
    useEffect(()=>{
-       fetch('http://localhost:5000/products')
+       fetch('https://grisly-blood-12747.herokuapp.com/products')
        .then(res=>res.json())
        .then(data =>setServiceDetails(data))
    },[])
@@ -26,11 +27,13 @@ const ServiceDetails = () => {
 
 //    orders 
    const { register, handleSubmit ,reset } = useForm();
+   
    const onSubmit = data => {
      data.order = singleService?.name 
-     
-     
-     fetch('http://localhost:5000/orders',{
+     data.price =singleService?.price
+     data.username = user?.displayName
+   
+     fetch('https://grisly-blood-12747.herokuapp.com/orders',{
          method : 'POST',
          headers:{
              'content-type':'application/json'
@@ -40,6 +43,7 @@ const ServiceDetails = () => {
      .then(res=>res.json())
      .then(result=>{
         if(result.insertedId){
+            
             alert('Order processed Successfully')
             reset()
         }
@@ -101,9 +105,9 @@ const ServiceDetails = () => {
             <div className="my-4 all-inputs">
                 <h6 className="mb-3">Please fill up all fields</h6>
             <form onSubmit={handleSubmit(onSubmit)}>
-      <input {...register("name", { required: true})} placeholder="Name"  className="me-3" required/>
+      <input value={user.displayName} {...register("name", { required: true})} placeholder="Name"  className="me-3" required/>
       
-      <input type="email" {...register("email", {required: true})} placeholder="Email"  required />
+      <input type="email" value={user.email} {...register("email", {required: true})} placeholder="Email"  required />
       <input type="number" {...register("phone_number", {required: true})} placeholder="Phone Number" className="me-3" required />
       <input  {...register("city", {required: true})} placeholder="City" required />
       
