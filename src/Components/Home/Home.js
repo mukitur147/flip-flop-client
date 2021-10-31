@@ -107,7 +107,8 @@ const Home = () => {
 <div className="testimonial-section">
 <h6 className=" mt-4 ">Our Packages</h6>
 <h4 ><b>Travel With Us</b> </h4>
-<p className="mb-5"><small>There’s a sunrise and a sunset every single day, and they’re absolutely free. Don’t miss so many of them</small></p>
+<p ><small>There are some of our Packages</small></p>
+<p className="mb-5 text-danger "><small><b>Please click View all Packages to see all of our packages</b></small></p>
 </div>
 
 <Row xs={1} md={3} className="g-4">
