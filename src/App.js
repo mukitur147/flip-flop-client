@@ -57,15 +57,15 @@ function App() {
            <PrivateRoute path="/serviceDetails/:key">
              <ServiceDetails></ServiceDetails>
            </PrivateRoute>
-           <Route path="/myorders">
+           <PrivateRoute path="/myorders">
              <MyOrders></MyOrders>
-           </Route>
-           <Route path="/allorders">
+           </PrivateRoute>
+           <PrivateRoute path="/allorders">
              <AllOrders></AllOrders>
-           </Route>
-           <Route path="/addservice">
+           </PrivateRoute>
+           <PrivateRoute path="/addservice">
              <AddNewService></AddNewService>
-           </Route>
+           </PrivateRoute>
            <Route path="*">
              <NotFound></NotFound>
            </Route>
