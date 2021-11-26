@@ -15,6 +15,9 @@ Server Link : https://grisly-blood-12747.herokuapp.com/
 - User can login by google.
 - User  can see their orders in My Orders Route
 - Users are able to delete their orders.
+- Firebase google login system.User can login via google.
+- User can book packages and booked packages are shown in my orders route.
+- User can delete his booking and is able to add new packages.
 
 ## Installation
 
